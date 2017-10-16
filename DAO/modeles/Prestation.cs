@@ -20,6 +20,7 @@ namespace DAO.modeles
         public DateTime HorairesDebut { get; set; }
         public DateTime HorairesFin { get; set; }
         public decimal Prix { get; set; }
+        public decimal Salaire_presta { get; set; }
         public int Note { get; set; }
         public string Avis { get; set; }
         public Status Etat { get; set; }

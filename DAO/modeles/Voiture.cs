@@ -14,7 +14,7 @@ namespace DAO.modeles
         public string Marque { get; set; }
         public string modele { get; set; }
         public string Immatriculation { get; set; }
-        
+        public int Nb_Place { get; set; }
 
         
     }

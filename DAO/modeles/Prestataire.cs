@@ -17,6 +17,7 @@ namespace DAO.modeles
         public int IdCoordonnee { get; set; }
         public int IdVoiture { get; set; }
         public Dispo Disponibilite { get; set; }
+        [Required(ErrorMessage = " obligatoire.")]
         public string NumPermis { get; set; }
         public string Assurance { get; set; }
         public string LienImage { get; set; }
