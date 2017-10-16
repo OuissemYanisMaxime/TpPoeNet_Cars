@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAO
+namespace DAO.modeles
 {
-    public class Db
+    class Trajet
     {
     }
 }
