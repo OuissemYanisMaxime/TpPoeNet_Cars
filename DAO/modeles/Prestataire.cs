@@ -19,7 +19,6 @@ namespace DAO.modeles
 
         [Display(Name = "Voiture : ")]
         [Required(ErrorMessage = " obligatoire.")]
-        [StringLength(20)]
         public int IdVoiture { get; set; }
 
         [Display(Name = "Disponibilité : ")]        
