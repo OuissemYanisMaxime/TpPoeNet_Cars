@@ -203,6 +203,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\API_Connection\API_Connection.csproj">
+      <Project>{d96d3d0f-22a5-4713-aee1-a03cca40e43a}</Project>
+      <Name>API_Connection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\API_Prestation\API_Prestation.csproj">
+      <Project>{f799d5eb-0789-455c-83e1-954a021d4940}</Project>
+      <Name>API_Prestation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\API_Reservation\API_Reservation.csproj">
+      <Project>{fd671808-4647-44ce-9917-7c2b995b9fbc}</Project>
+      <Name>API_Reservation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
