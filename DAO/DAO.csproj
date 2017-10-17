@@ -47,9 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="modeles\Adresse.cs" />
     <Compile Include="modeles\Client.cs" />
-    <Compile Include="modeles\Coordonnee.cs" />
+    <Compile Include="modeles\CoordonneeC.cs" />
+    <Compile Include="modeles\CoordonneeP.cs" />
     <Compile Include="modeles\Db.cs" />
     <Compile Include="modeles\Prestataire.cs" />
     <Compile Include="modeles\Prestation.cs" />

@@ -15,40 +15,42 @@ namespace DAO.modeles
         public int Id { get; set; }
 
         [Display(Name = "Prestataire : ")]
-        [Required(ErrorMessage = " obligatoire.")]
+    
         public int IdPrestataire { get; set; }
 
         [Display(Name = "Numéro client : ")]
-        [Required(ErrorMessage = " obligatoire.")]
+       
         public int IdClient { get; set; }
 
-        // Adresse depart
-        [Display(Name = "Rue départ : ")]
+        //Adresse départ
+        [Display(Name = "Rue de départ : ")]
         [Required(ErrorMessage = " obligatoire.")]
         public string RueDep { get; set; }
 
-        [Display(Name = "CodePostal départ : ")]
+        [Display(Name = "Code postal ville de départ : ")]
         [Required(ErrorMessage = " obligatoire.")]
-        public int CodePostalDep { get; set; }
+        [StringLength(15)]
+        public string CodePostalDep { get; set; }
 
-        [Display(Name = "Ville départ : ")]
+        [Display(Name = "Ville de depart: ")]
         [Required(ErrorMessage = " obligatoire.")]
+        [StringLength(100)]
         public string VilleDep { get; set; }
 
-        // Adresse Arrivée
-        [Display(Name = "Rue arrivée : ")]
+        //Adresse arrivée
+        [Display(Name = "Rue d'arrivée : ")]
         [Required(ErrorMessage = " obligatoire.")]
         public string RueArr { get; set; }
 
-        [Display(Name = "CodePostal arrivée : ")]
+        [Display(Name = "Code postal de la ville d'arrivée : ")]
         [Required(ErrorMessage = " obligatoire.")]
-        public int CodePostalArr { get; set; }
+        [StringLength(15)]
+        public string CodePostalArr { get; set; }
 
-        [Display(Name = "Ville arrivée : ")]
+        [Display(Name = "Ville d'arrivée : ")]
         [Required(ErrorMessage = " obligatoire.")]
+        [StringLength(100)]
         public string VilleArr { get; set; }
-
-        //
 
         [Display(Name = "Heure de départ : ")]
         [DataType(DataType.DateTime)]
@@ -72,6 +74,7 @@ namespace DAO.modeles
 
         [Display(Name = "Etat : ")]
         public Status Etat { get; set; }
+        
         
         [ForeignKey("IdClient")]
         public virtual Client Client { get; set; }

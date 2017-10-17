@@ -14,12 +14,10 @@ namespace DAO.modeles
 
         [Key]
         public int Id { get; set; }
-
-        [Required(ErrorMessage = " obligatoire.")]
+        
         public int IdCoordonnee { get; set; }
 
         [Display(Name = "Voiture : ")]
-        [Required(ErrorMessage = " obligatoire.")]
         public int IdVoiture { get; set; }
 
         [Display(Name = "Disponibilité : ")]        
@@ -49,10 +47,10 @@ namespace DAO.modeles
         public DateTime dateConnection { get; set; }
 
         [ForeignKey("IdCoordonnee")]
-        public virtual Coordonnee Coordonnee { get; set; }
+        public CoordonneeP Coordonnee { get; set; }
 
         [ForeignKey("IdVoiture")]
-        public virtual Voiture Voiture { get; set; }
+        public Voiture Voiture { get; set; }
 
         public virtual ICollection<Prestation> Prestations { get; set; }
 
@@ -61,7 +59,7 @@ namespace DAO.modeles
             this.Disponibilite = Dispo.HS;
             this.DateInscription = DateTime.Now;
         }
-}
+    }
 }
 
 
