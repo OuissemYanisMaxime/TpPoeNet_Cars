@@ -12,3 +12,21 @@ DAO/obj/Debug/
 TpPoeNet/obj/Debug/
 
 WebInterface/obj/Debug/
+
+DAO/obj/
+
+AdminInterface/obj/
+
+WebInterface/obj/
+
+TpPoeNet/obj/
+
+API_Reservation/obj/
+
+API_Prestation/obj/
+
+API_Connection/obj/
+
+\.vs/TpPoeNet/v15/
+
+\.vs/
