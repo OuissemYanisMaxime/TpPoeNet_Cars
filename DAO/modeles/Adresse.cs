@@ -19,10 +19,12 @@ namespace DAO.modeles
 
         [Display(Name = "CodePostal : ")]
         [Required(ErrorMessage = " obligatoire.")]
-        public int CodePostal { get; set; }
+        [StringLength(12)]
+        public string CodePostal { get; set; }
 
         [Display(Name = "Ville : ")]
         [Required(ErrorMessage = " obligatoire.")]
+        [StringLength(100)]
         public string Ville { get; set; }
 
         public Adresse()

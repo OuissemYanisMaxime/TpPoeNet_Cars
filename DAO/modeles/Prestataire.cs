@@ -14,6 +14,7 @@ namespace DAO.modeles
 
         [Key]
         public int Id { get; set; }
+
         [Required(ErrorMessage = " obligatoire.")]
         public int IdCoordonnee { get; set; }
 

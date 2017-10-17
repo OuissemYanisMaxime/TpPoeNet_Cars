@@ -22,13 +22,33 @@ namespace DAO.modeles
         [Required(ErrorMessage = " obligatoire.")]
         public int IdClient { get; set; }
 
-        [Display(Name = "Adresse de départ : ")]
+        // Adresse depart
+        [Display(Name = "Rue départ : ")]
         [Required(ErrorMessage = " obligatoire.")]
-        public int IdAdresseDepart { get; set; }
+        public string RueDep { get; set; }
 
-        [Display(Name = "Adresse d'arrivée : ")]
+        [Display(Name = "CodePostal départ : ")]
         [Required(ErrorMessage = " obligatoire.")]
-        public int IdAdresseArrivee { get; set; }
+        public int CodePostalDep { get; set; }
+
+        [Display(Name = "Ville départ : ")]
+        [Required(ErrorMessage = " obligatoire.")]
+        public string VilleDep { get; set; }
+
+        // Adresse Arrivée
+        [Display(Name = "Rue arrivée : ")]
+        [Required(ErrorMessage = " obligatoire.")]
+        public string RueArr { get; set; }
+
+        [Display(Name = "CodePostal arrivée : ")]
+        [Required(ErrorMessage = " obligatoire.")]
+        public int CodePostalArr { get; set; }
+
+        [Display(Name = "Ville arrivée : ")]
+        [Required(ErrorMessage = " obligatoire.")]
+        public string VilleArr { get; set; }
+
+        //
 
         [Display(Name = "Heure de départ : ")]
         [DataType(DataType.DateTime)]
@@ -52,13 +72,7 @@ namespace DAO.modeles
 
         [Display(Name = "Etat : ")]
         public Status Etat { get; set; }
-
-        [ForeignKey("IdAdresseDepart")]
-        public virtual Adresse Adresse { get; set; }
-
-        [ForeignKey("IdAdresseArrivee")]
-        public virtual Adresse Adresse1 { get; set; }
-
+        
         [ForeignKey("IdClient")]
         public virtual Client Client { get; set; }
 
