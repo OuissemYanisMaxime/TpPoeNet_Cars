@@ -39,6 +39,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,9 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="modeles\Adresse.cs" />
     <Compile Include="modeles\Client.cs" />
-    <Compile Include="modeles\Coordonnee.cs" />
+    <Compile Include="modeles\CoordonneeP.cs" />
+    <Compile Include="modeles\CoordonneeC.cs" />
     <Compile Include="modeles\Db.cs" />
     <Compile Include="modeles\Prestataire.cs" />
     <Compile Include="modeles\Prestation.cs" />

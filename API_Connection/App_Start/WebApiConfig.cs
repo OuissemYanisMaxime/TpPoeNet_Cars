@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 
 namespace API_Connection
@@ -9,7 +10,14 @@ namespace API_Connection
     {
         public static void Register(HttpConfiguration config)
         {
-            // Configuration et services API Web
+
+
+
+            //config.Formatters.Clear();
+            //config.Formatters.Add(new JsonMediaTypeFormatter());
+
+            //config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            //// Configuration et services API Web
 
             // Itinéraires de l'API Web
             config.MapHttpAttributeRoutes();

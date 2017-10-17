@@ -34,7 +34,7 @@ namespace DAO.modeles
         public DateTime DateConnection { get; set; }
 
         [ForeignKey("IdCoordonnee")]
-        public virtual Coordonnee Coordonnee { get; set; }
+        public virtual CoordonneeC Coordonnee { get; set; }
 
         public virtual ICollection<Prestation> Prestations { get; set; }
 

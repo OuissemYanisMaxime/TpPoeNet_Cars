@@ -14,11 +14,12 @@ namespace DAO.modeles
 
         }
        
-        public DbSet<Adresse> Adresses { get; set; }
         public DbSet<Client> Clients { get; set; }
-        public DbSet<Coordonnee> Coordonnees { get; set; }
+        public DbSet<CoordonneeC> CoordonneeCs { get; set; }
+        public DbSet<CoordonneeP> CoordonneePs { get; set; }
         public DbSet<Prestataire> Prestataires { get; set; }
         public DbSet<Prestation> Prestations { get; set; }
         public DbSet<Voiture> Voitures { get; set; }
+        
     }
 }
