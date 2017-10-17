@@ -183,16 +183,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-<<<<<<< HEAD
     <Compile Include="Controllers\ClientsController.cs" />
-=======
-    <Compile Include="Controllers\AdressesController.cs" />
-    <Compile Include="Controllers\ClientsController.cs" />
-    <Compile Include="Controllers\CoordonneesController.cs" />
->>>>>>> master
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PrestatairesController.cs" />
-    <Compile Include="Controllers\PrestationsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VoituresController.cs" />
     <Compile Include="Global.asax.cs">
