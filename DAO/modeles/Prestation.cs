@@ -22,29 +22,41 @@ namespace DAO.modeles
        
         public int IdClient { get; set; }
 
+<<<<<<< HEAD
         
+=======
+        //Adresse départ
+>>>>>>> master
         [Display(Name = "Rue de départ : ")]
         [Required(ErrorMessage = " obligatoire.")]
         public string RueDep { get; set; }
 
         [Display(Name = "Code postal ville de départ : ")]
         [Required(ErrorMessage = " obligatoire.")]
-        public int CodePostalDep { get; set; }
+        [StringLength(15)]
+        public string CodePostalDep { get; set; }
 
         [Display(Name = "Ville de depart: ")]
         [Required(ErrorMessage = " obligatoire.")]
+        [StringLength(100)]
         public string VilleDep { get; set; }
 
+<<<<<<< HEAD
+=======
+        //Adresse arrivée
+>>>>>>> master
         [Display(Name = "Rue d'arrivée : ")]
         [Required(ErrorMessage = " obligatoire.")]
         public string RueArr { get; set; }
 
         [Display(Name = "Code postal de la ville d'arrivée : ")]
         [Required(ErrorMessage = " obligatoire.")]
-        public int CodePostalArr { get; set; }
+        [StringLength(15)]
+        public string CodePostalArr { get; set; }
 
         [Display(Name = "Ville d'arrivée : ")]
         [Required(ErrorMessage = " obligatoire.")]
+        [StringLength(100)]
         public string VilleArr { get; set; }
 
         [Display(Name = "Heure de départ : ")]

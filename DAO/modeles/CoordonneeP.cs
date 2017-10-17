@@ -43,10 +43,19 @@ namespace DAO.modeles
 
         [Display(Name = "CodePostal : ")]
         [Required(ErrorMessage = " obligatoire.")]
+<<<<<<< HEAD
         public int CodePostal { get; set; }
 
         [Display(Name = "Ville : ")]
         [Required(ErrorMessage = " obligatoire.")]
+=======
+        [StringLength(15)]
+        public String CodePostal { get; set; }
+
+        [Display(Name = "Ville : ")]
+        [Required(ErrorMessage = " obligatoire.")]
+        [StringLength(100)]
+>>>>>>> master
         public string Ville { get; set; }
 
 
