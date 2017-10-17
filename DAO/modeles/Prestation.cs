@@ -22,11 +22,7 @@ namespace DAO.modeles
        
         public int IdClient { get; set; }
 
-<<<<<<< HEAD
-        
-=======
         //Adresse départ
->>>>>>> master
         [Display(Name = "Rue de départ : ")]
         [Required(ErrorMessage = " obligatoire.")]
         public string RueDep { get; set; }
@@ -41,10 +37,7 @@ namespace DAO.modeles
         [StringLength(100)]
         public string VilleDep { get; set; }
 
-<<<<<<< HEAD
-=======
         //Adresse arrivée
->>>>>>> master
         [Display(Name = "Rue d'arrivée : ")]
         [Required(ErrorMessage = " obligatoire.")]
         public string RueArr { get; set; }

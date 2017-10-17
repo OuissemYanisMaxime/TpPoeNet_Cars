@@ -50,13 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="modeles\Client.cs" />
-<<<<<<< HEAD
-    <Compile Include="modeles\CoordonneeP.cs" />
-    <Compile Include="modeles\CoordonneeC.cs" />
-=======
     <Compile Include="modeles\CoordonneeC.cs" />
     <Compile Include="modeles\CoordonneeP.cs" />
->>>>>>> master
     <Compile Include="modeles\Db.cs" />
     <Compile Include="modeles\Prestataire.cs" />
     <Compile Include="modeles\Prestation.cs" />

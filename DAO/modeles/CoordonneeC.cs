@@ -14,7 +14,7 @@ namespace DAO.modeles
         public int Id { get; set; }
 
         [EmailAddress(ErrorMessage = "Vous devez saisir un mail valide")]
-        [Display(Name ="EMail : ")]
+        [Display(Name = "EMail : ")]
         [Required(ErrorMessage = " obligatoire.")]
         public string Mail { get; set; }
 
@@ -43,10 +43,13 @@ namespace DAO.modeles
 
         [Display(Name = "CodePostal : ")]
         [Required(ErrorMessage = " obligatoire.")]
-        public int CodePostal { get; set; }
+
+        [StringLength(15)]
+        public String CodePostal { get; set; }
 
         [Display(Name = "Ville : ")]
         [Required(ErrorMessage = " obligatoire.")]
+        [StringLength(100)]
         public string Ville { get; set; }
 
 

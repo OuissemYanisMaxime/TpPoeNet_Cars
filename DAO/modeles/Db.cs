@@ -9,7 +9,7 @@ namespace DAO.modeles
 {
     public class Db : DbContext
     {
-        public Db() : base("TpCars_Db")
+        public Db() : base("TpCarsDb")
         {
 
         }
