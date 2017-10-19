@@ -52,7 +52,7 @@ namespace DAO.modeles
         [ForeignKey("IdVoiture")]
         public Voiture Voiture { get; set; }
 
-        public virtual ICollection<Prestation> Prestations { get; set; }
+        //public virtual ICollection<Prestation> Prestations { get; set; }
 
         public Prestataire()
         {

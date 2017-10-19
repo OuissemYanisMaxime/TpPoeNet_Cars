@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AdminInterface
-{
+namespace AdminInterface { 
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
@@ -23,6 +23,12 @@ namespace AdminInterface
         public MainWindow()
         {
             InitializeComponent();
+            //if (!DesignerProperties.GetIsInDesignMode(Application.Current.MainWindow))
+            //{
+            //    Application.Current.Dispatcher.BeginInvoke(Priority.Background,new Action(Populate))
+            //}
         }
+
+        
     }
 }
