@@ -25,9 +25,9 @@ namespace AdminInterface
         {
             InitializeComponent();
         }
-        public InfoPresta(Prestataire prestataire) : this()
+        public InfoPresta(Window FenetrePrincipale) : this()
         {
-            
+            (DataContext as AddViewModel).Wp = FenetrePrincipale;
         }
         private void Close_Click(object sender, RoutedEventArgs e)
         {
