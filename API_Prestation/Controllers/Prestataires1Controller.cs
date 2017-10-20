@@ -11,8 +11,7 @@ using System.Web.Http.Description;
 using DAO.modeles;
 using System.Xml.Linq;
 using System.Globalization;
-using System.Web.Http;
-using System.Web.OData;
+
 
 namespace API_Prestation.Controllers
 {
