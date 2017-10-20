@@ -97,17 +97,17 @@ namespace AdminInterface.ViewModel
             coordonneeP = new CoordonneeP();
             mesPrestataire = new ObservableCollection<Prestataire>();
             CommandInfoPrestataire = new RelayCommand(InfoduPrestataire);
-            //if (!DesignerProperties.GetIsInDesignMode(Application.Current.MainWindow)) //pour éviter les plantages du designer...
-            //{
-            //    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(PopulateListePrestataireFromAPI));
-            //}
+            if (!DesignerProperties.GetIsInDesignMode(Application.Current.MainWindow)) //pour éviter les plantages du designer...
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(PopulateListePrestataireFromAPI));
+            }
 
-            CoordonneeP c = new CoordonneeP() { Nom = "azer", Prenom = "qsdf", TelephoneFixe = "51446546", TelephonePortable = "64584651", CodePostal = "59000", Mail = "efrgeger@gserg.fr", Rue = "qrfq", Ville = "qeqrq", Id = 2 };
-            Voiture v = new Voiture() { id = 2, Immatriculation = "qrgqer", Marque = "qsfq", modele = "sdfze", Nb_Place = 4 };
-            Prestataire p = new Prestataire() { Id = 2, Voiture = v, Coordonnee = c, Assurance = "qfdq", Disponibilite = Dispo.Dispo, dateConnection = DateTime.Now, IdCoordonnee = 2, IdVoiture = 2, LienImage = "sgthsr", MdpCrypte = "qfbqqdfqdf", NumPermis = "fbqerg" };
-            mesPrestataire.Add(p);
-            mesPrestataire.Add(p);
-            mesPrestataire.Add(p);
+            //CoordonneeP c = new CoordonneeP() { Nom = "azer", Prenom = "qsdf", TelephoneFixe = "51446546", TelephonePortable = "64584651", CodePostal = "59000", Mail = "efrgeger@gserg.fr", Rue = "qrfq", Ville = "qeqrq", Id = 2 };
+            //Voiture v = new Voiture() { id = 2, Immatriculation = "qrgqer", Marque = "qsfq", modele = "sdfze", Nb_Place = 4 };
+            //Prestataire p = new Prestataire() { Id = 2, Voiture = v, Coordonnee = c, Assurance = "qfdq", Disponibilite = Dispo.Dispo, dateConnection = DateTime.Now, IdCoordonnee = 2, IdVoiture = 2, LienImage = "sgthsr", MdpCrypte = "qfbqqdfqdf", NumPermis = "fbqerg" };
+            //mesPrestataire.Add(p);
+            //mesPrestataire.Add(p);
+            //mesPrestataire.Add(p);
         }
         
         public async void PopulateListePrestataireFromAPI()
@@ -128,7 +128,7 @@ namespace AdminInterface.ViewModel
 
         public void InfoduPrestataire()
         {
-            InfoPresta InfoWindow = new InfoPresta(prestataire);
+            InfoPresta InfoWindow = new InfoPresta();
             InfoWindow.Show();
         }
 

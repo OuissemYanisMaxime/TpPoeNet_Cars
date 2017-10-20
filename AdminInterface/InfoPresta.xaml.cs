@@ -27,7 +27,7 @@ namespace AdminInterface
         }
         public InfoPresta(Window FenetrePrincipale) : this()
         {
-            (DataContext as AddViewModel).Wp = FenetrePrincipale;
+            //(DataContext as ViewModel).Wp = FenetrePrincipale;
         }
         private void Close_Click(object sender, RoutedEventArgs e)
         {
