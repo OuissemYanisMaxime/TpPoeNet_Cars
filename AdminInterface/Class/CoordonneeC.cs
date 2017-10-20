@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AdminInterface.Class
+
 {
     public class CoordonneeC
     {
