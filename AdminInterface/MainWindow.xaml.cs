@@ -23,6 +23,13 @@ namespace AdminInterface
         public MainWindow()
         {
             InitializeComponent();
+            //if (!DesignerProperties.GetIsInDesignMode(Application.Current.MainWindow)) 
+            //{ 
+            //    Application.Current.Dispatcher.BeginInvoke(Priority.Background,new Action(Populate)) 
+            //} 
         }
+
+
     }
 }
+
