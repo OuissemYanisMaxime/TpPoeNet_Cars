@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AdminInterface.Class;
+using AdminInterface.ViewModel;
 
 namespace AdminInterface
 {
@@ -20,16 +22,26 @@ namespace AdminInterface
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
-            //if (!DesignerProperties.GetIsInDesignMode(Application.Current.MainWindow)) 
-            //{ 
-            //    Application.Current.Dispatcher.BeginInvoke(Priority.Background,new Action(Populate)) 
-            //} 
+            
+            
         }
 
+        private void Btn_detail_Click(object sender, RoutedEventArgs e)
+        {
+            PrestataireViewModel pvm = new PrestataireViewModel();
 
+            int id = pvm.convert_id_id(ListPresta.SelectedIndex);
+            
+            InfoPresta InfoWindow = new InfoPresta(id);
+            //InfoPresta InfoWindow = new InfoPresta();
+            InfoWindow.Show();
+        }
+
+        
     }
 }
 

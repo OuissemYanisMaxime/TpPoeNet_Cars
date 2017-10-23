@@ -25,8 +25,8 @@ namespace AdminInterface.ViewModel
 
         public Prestataire Prestataire { get => prestataire; set { prestataire = value; RaisePropertyChanged("Prestataire"); } }
 
+        public int Id { get => prestataire.Id; set { prestataire.Id = value; RaisePropertyChanged("Id"); } }
 
-        
 
 
         public Dispo Disponibilite {
@@ -87,9 +87,11 @@ namespace AdminInterface.ViewModel
 
         public int Nb_Place { get => Voiture.Nb_Place; set { Voiture.Nb_Place = value; RaisePropertyChanged("Nb_Place"); } }
 
+
+        private ObservableCollection<Prestataire> mesPrestataire; 
         public ObservableCollection<Prestataire> MesPrestataire { get => mesPrestataire; set { mesPrestataire = value; RaisePropertyChanged("MesPrestataire"); } }
 
-        private ObservableCollection<Prestataire> mesPrestataire;
+        
 
         public PrestataireViewModel()
         {
@@ -97,39 +99,51 @@ namespace AdminInterface.ViewModel
             coordonneeP = new CoordonneeP();
             mesPrestataire = new ObservableCollection<Prestataire>();
             CommandInfoPrestataire = new RelayCommand(InfoduPrestataire);
-            if (!DesignerProperties.GetIsInDesignMode(Application.Current.MainWindow)) //pour éviter les plantages du designer...
-            {
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(PopulateListePrestataireFromAPI));
-            }
+           
 
-            //CoordonneeP c = new CoordonneeP() { Nom = "azer", Prenom = "qsdf", TelephoneFixe = "51446546", TelephonePortable = "64584651", CodePostal = "59000", Mail = "efrgeger@gserg.fr", Rue = "qrfq", Ville = "qeqrq", Id = 2 };
-            //Voiture v = new Voiture() { id = 2, Immatriculation = "qrgqer", Marque = "qsfq", modele = "sdfze", Nb_Place = 4 };
-            //Prestataire p = new Prestataire() { Id = 2, Voiture = v, Coordonnee = c, Assurance = "qfdq", Disponibilite = Dispo.Dispo, dateConnection = DateTime.Now, IdCoordonnee = 2, IdVoiture = 2, LienImage = "sgthsr", MdpCrypte = "qfbqqdfqdf", NumPermis = "fbqerg" };
-            //mesPrestataire.Add(p);
-            //mesPrestataire.Add(p);
-            //mesPrestataire.Add(p);
+
+            Task t = Task.Run(() => PopulateListePrestataireFromAPI());
+
+            t.Wait();
+
+ 
         }
-        
-        public async void PopulateListePrestataireFromAPI()
+
+        public async Task<ObservableCollection<Prestataire>> PopulateListePrestataireFromAPI()
         {
             IEnumerable<Prestataire> tempListPrestataire;
             HttpClient Rqlistpresta = new HttpClient();
             Rqlistpresta.BaseAddress = new Uri("http://localhost:52467/");
             Rqlistpresta.DefaultRequestHeaders.Accept.Clear();
             Rqlistpresta.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            
+
             HttpResponseMessage reponseAPI = await Rqlistpresta.GetAsync("api/Prestataires1");
             if (reponseAPI.IsSuccessStatusCode)
             {
                 tempListPrestataire = await reponseAPI.Content.ReadAsAsync<IEnumerable<Prestataire>>();
                 mesPrestataire = new ObservableCollection<Prestataire>(tempListPrestataire);
             }
+            return mesPrestataire;
+        }
+         
+        
+
+
+     public int convert_id_id(int id)
+        {
+            int res = -1;
+
+            res = mesPrestataire[id].Id;
+
+            return res;
         }
 
         public void InfoduPrestataire()
         {
-            InfoPresta InfoWindow = new InfoPresta();
-            InfoWindow.Show();
+            
+            //InfoPresta InfoWindow = new InfoPresta(id);
+            ////InfoPresta InfoWindow = new InfoPresta();
+            //InfoWindow.Show();
         }
 
 

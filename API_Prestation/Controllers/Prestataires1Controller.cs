@@ -150,7 +150,11 @@ namespace API_Prestation.Controllers
             {
                 return NotFound();
             }
-
+            using (var db = new Db())
+            {
+                prestataire.Coordonnee = db.CoordonneePs.Find(prestataire.IdCoordonnee);
+                prestataire.Voiture = db.Voitures.Find(prestataire.IdVoiture);
+            }
             return Ok(prestataire);
         }
 

@@ -11,18 +11,21 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Windows;
 using System.Windows.Threading;
+using GalaSoft.MvvmLight.CommandWpf;
+using System.Windows.Input;
 
 namespace AdminInterface.ViewModel
 {
-    class InfoPrestaViewModel : ViewModelBase 
+    class InfoPrestaViewModel : ViewModelBase, INotifyPropertyChanged
     {
         public Window MainWindow;
         private Prestataire prestataire;
         private CoordonneeP coordonneeP;
+        private Voiture voiture;
 
         public Prestataire Prestataire { get => prestataire; set { prestataire = value; RaisePropertyChanged("Prestataire"); } }
 
-
+        public int Id { get => prestataire.Id; set { prestataire.Id = value; RaisePropertyChanged("Id"); } }
 
 
 
@@ -73,20 +76,52 @@ namespace AdminInterface.ViewModel
         public String CodePostal { get => coordonneeP.CodePostal; set { coordonneeP.CodePostal = value; RaisePropertyChanged("CodePostalP"); } }
 
 
-        public Voiture Voiture { get => Voiture; set { Voiture = value; RaisePropertyChanged("Voiture"); } }
+        public Voiture Voiture { get => voiture; set { voiture = value; RaisePropertyChanged("Voiture"); } }
 
-        public string Marque { get => Voiture.Marque; set { Voiture.Marque = value; RaisePropertyChanged("Marque"); } }
-
-
-        public string modele { get => Voiture.modele; set { Voiture.modele = value; RaisePropertyChanged("modele"); } }
+        public string Marque { get => voiture.Marque; set { voiture.Marque = value; RaisePropertyChanged("Marque"); } }
 
 
-        public string Immatriculation { get => Voiture.Immatriculation; set { Voiture.Immatriculation = value; RaisePropertyChanged("Immatriculation"); } }
+        public string modele { get => voiture.modele; set { voiture.modele = value; RaisePropertyChanged("modele"); } }
 
 
-        public int Nb_Place { get => Voiture.Nb_Place; set { Voiture.Nb_Place = value; RaisePropertyChanged("Nb_Place"); } }
+        public string Immatriculation { get => voiture.Immatriculation; set { voiture.Immatriculation = value; RaisePropertyChanged("Immatriculation"); } }
 
 
+        public int Nb_Place { get => voiture.Nb_Place; set { voiture.Nb_Place = value; RaisePropertyChanged("Nb_Place"); } }
+
+        
+
+        public InfoPrestaViewModel()
+        {
+            prestataire = new Prestataire();
+            coordonneeP = new CoordonneeP();
+            voiture  = new Voiture();
+
+            Task t = Task.Run(() => PrestataireFromAPI(Id));
+
+            t.Wait();
+            coordonneeP = prestataire.Coordonnee;
+            voiture = prestataire.Voiture;
+            
+        }
+
+        public async Task<Prestataire> PrestataireFromAPI(int id)
+        {
+            
+            Prestataire prestataire = new Prestataire();
+            HttpClient Rqlistpresta = new HttpClient();
+            Rqlistpresta.BaseAddress = new Uri("http://localhost:52467/");
+            Rqlistpresta.DefaultRequestHeaders.Accept.Clear();
+            Rqlistpresta.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage reponseAPI = await Rqlistpresta.GetAsync("api/Prestataires1/" + id);
+            if (reponseAPI.IsSuccessStatusCode)
+            {
+                Prestataire = await reponseAPI.Content.ReadAsAsync<Prestataire>();
+                prestataire = Prestataire;
+            }
+            return prestataire;
+        }
 
     }
 }
