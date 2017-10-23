@@ -35,9 +35,9 @@ namespace DAO.modeles
         [Required(ErrorMessage = " obligatoire.")]
         public string LienImage { get; set; }
 
-        [Display(Name = "Mot de passe : ")]
-        [Required(ErrorMessage = " obligatoire.")]
-        public string MdpCrypte { get; set; }
+        //[Display(Name = "Mot de passe : ")]
+        //[Required(ErrorMessage = " obligatoire.")]
+        //public string MdpCrypte { get; set; }
 
         [Display(Name = "Date d'inscription : ")]
         [DataType(DataType.DateTime)]
