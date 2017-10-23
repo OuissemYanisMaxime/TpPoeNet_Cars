@@ -45,7 +45,7 @@
                                 </ListView.ItemTemplate>
                             </ListView>
                         </ScrollViewer>
-                        <Button x:Name="Btn_detail" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="100"  FontWeight="Bold" FontSize="16" Background="#FF3B5BEA" Command="{Binding CommandInfoPrestataire}" Click="Btn_detail_Click">Voir détail
+                        <Button x:Name="Btn_detail" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="100"  FontWeight="Bold" FontSize="16" Background="#FF3B5BEA" Click="Btn_detail_Click">Voir détail
                         </Button>
 
 

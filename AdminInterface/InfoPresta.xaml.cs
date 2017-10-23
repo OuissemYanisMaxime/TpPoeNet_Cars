@@ -29,6 +29,10 @@ namespace AdminInterface
         {
             
             (DataContext as InfoPrestaViewModel).Id = id;
+
+            InfoPrestaViewModel ipvm = new InfoPrestaViewModel();
+            ipvm.initPrestaViewModel(id);
+            
         }
         private void Close_Click(object sender, RoutedEventArgs e)
         {

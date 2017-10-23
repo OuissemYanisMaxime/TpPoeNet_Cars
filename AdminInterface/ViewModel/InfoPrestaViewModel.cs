@@ -18,11 +18,12 @@ namespace AdminInterface.ViewModel
 {
     class InfoPrestaViewModel : ViewModelBase, INotifyPropertyChanged
     {
-        public Window MainWindow;
+        //public Window MainWindow;
         private Prestataire prestataire;
         private CoordonneeP coordonneeP;
-        private Voiture voiture;
 
+        private Voiture voiture;
+        //public int id { get; set; }
         public Prestataire Prestataire { get => prestataire; set { prestataire = value; RaisePropertyChanged("Prestataire"); } }
 
         public int Id { get => prestataire.Id; set { prestataire.Id = value; RaisePropertyChanged("Id"); } }
@@ -56,24 +57,24 @@ namespace AdminInterface.ViewModel
 
         public CoordonneeP CoordonneeP { get => coordonneeP; set { coordonneeP = value; RaisePropertyChanged("CoordonneeP"); } }
 
-        public string Mail { get => coordonneeP.Mail; set { coordonneeP.Mail = value; RaisePropertyChanged("MailP"); } }
+        public string Mail { get => coordonneeP.Mail; set { coordonneeP.Mail = value; RaisePropertyChanged("Mail"); } }
 
 
-        public string Nom { get => coordonneeP.Nom; set { coordonneeP.Nom = value; RaisePropertyChanged("NomP"); } }
+        public string Nom { get => coordonneeP.Nom; set { coordonneeP.Nom = value; RaisePropertyChanged("Nom"); } }
 
 
-        public string Prenom { get => coordonneeP.Prenom; set { coordonneeP.Prenom = value; RaisePropertyChanged("PrenomP"); } }
+        public string Prenom { get => coordonneeP.Prenom; set { coordonneeP.Prenom = value; RaisePropertyChanged("Prenom"); } }
 
 
-        public string TelephoneFixe { get => coordonneeP.TelephoneFixe; set { coordonneeP.TelephoneFixe = value; RaisePropertyChanged("TelephoneFixeP"); } }
+        public string TelephoneFixe { get => coordonneeP.TelephoneFixe; set { coordonneeP.TelephoneFixe = value; RaisePropertyChanged("TelephoneFixe"); } }
 
 
-        public string TelephonePortable { get => coordonneeP.TelephonePortable; set { coordonneeP.TelephonePortable = value; RaisePropertyChanged("TelephonePortableP"); } }
+        public string TelephonePortable { get => coordonneeP.TelephonePortable; set { coordonneeP.TelephonePortable = value; RaisePropertyChanged("TelephonePortable"); } }
 
-        public string Rue { get => coordonneeP.Rue; set { coordonneeP.Rue = value; RaisePropertyChanged("RueP"); } }
+        public string Rue { get => coordonneeP.Rue; set { coordonneeP.Rue = value; RaisePropertyChanged("Rue"); } }
 
 
-        public String CodePostal { get => coordonneeP.CodePostal; set { coordonneeP.CodePostal = value; RaisePropertyChanged("CodePostalP"); } }
+        public String CodePostal { get => coordonneeP.CodePostal; set { coordonneeP.CodePostal = value; RaisePropertyChanged("CodePostal"); } }
 
 
         public Voiture Voiture { get => voiture; set { voiture = value; RaisePropertyChanged("Voiture"); } }
@@ -97,12 +98,24 @@ namespace AdminInterface.ViewModel
             coordonneeP = new CoordonneeP();
             voiture  = new Voiture();
 
-            Task t = Task.Run(() => PrestataireFromAPI(Id));
-
-            t.Wait();
-            coordonneeP = prestataire.Coordonnee;
-            voiture = prestataire.Voiture;
             
+
+        }
+        public void initPrestaViewModel(int id)
+        {
+            
+            if (id != 0)
+            {
+
+                Task t = Task.Run(() => PrestataireFromAPI(id));
+                
+                t.Wait();
+                coordonneeP = prestataire.Coordonnee;
+                voiture = prestataire.Voiture;
+          
+                
+            }
+
         }
 
         public async Task<Prestataire> PrestataireFromAPI(int id)

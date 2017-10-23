@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminInterface.ViewModel"
         mc:Ignorable="d"
-        Title="InfoPresta" Height="800" Width="600">
+        Title="InfoPresta" Height="800" Width="700">
     <Window.DataContext>
         <local:InfoPrestaViewModel></local:InfoPrestaViewModel>
     </Window.DataContext>
@@ -44,39 +44,54 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <!--<DataGrid ItemsSource="{Binding Prestataire}" Width="auto" Height="auto" AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                --><!--<DataGridTextColumn Header="Id" Binding="{Binding IdClient}" IsReadOnly="True"></DataGridTextColumn>--><!--
+                <DataGridTextColumn Header="Nom" Binding="{Binding CoordonneeP.Nom}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Prenom" Binding="{Binding CoordonneeP.Prenom}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Email" Binding="{Binding Disponibilite}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Adresse" Binding="{Binding CoordonneeP.Mail}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Code Postal" Binding="{Binding CoordonneeP.TelephoneFixe}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ville" Binding="{Binding CoordonneeP.TelephonePortable}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Téléphone" Binding="{Binding CoordonneeP.Rue}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Date de Validité" Binding="{Binding CoordonneeP.Ville}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>-->
+               
         <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1">Nom</Label>
-        <Label Grid.Row="1" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding CoordonneeP.Nom}"></Label>
+        <TextBox Grid.Row="1" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding CoordonneeP.Nom , Mode=TwoWay}"></TextBox>
         <Label Grid.Row="2" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1">Prenom</Label>
-        <Label Grid.Row="3" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding CoordonneeP.Prenom}"></Label>
+        <TextBox Grid.Row="3" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding CoordonneeP.Prenom, Mode=TwoWay}"></TextBox>
         <Label Grid.Row="4" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1">Disponibilité</Label>
-        <Label Grid.Row="5" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding Disponibilite}"></Label>
+        <TextBox Grid.Row="5" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding Disponibilite, Mode=TwoWay}"></TextBox>
         <Label Grid.Row="6" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1">Mail</Label>
-        <Label Grid.Row="7" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding CoordonneeP.Mail}"></Label>
+        <TextBox Grid.Row="7" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding CoordonneeP.Mail, Mode=TwoWay}"></TextBox>
         <Label Grid.Row="8" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1">Téléphone Fixe</Label>
-        <Label Grid.Row="9" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding CoordonneeP.TelephoneFixe}"></Label>
+        <TextBox Grid.Row="9" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding CoordonneeP.TelephoneFixe, Mode=TwoWay}"></TextBox>
         <Label Grid.Row="10" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1">Téléphone Portable</Label>
-        <Label Grid.Row="11" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding CoordonneeP.TelephonePortable}"></Label>
+        <TextBox Grid.Row="11" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding CoordonneeP.TelephonePortable, Mode=TwoWay}"></TextBox>
         <Label Grid.Row="12" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1">Rue</Label>
-        <Label Grid.Row="13" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding CoordonneeP.Rue}"></Label>
+        <TextBox Grid.Row="13" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding CoordonneeP.Rue, Mode=TwoWay}"></TextBox>
         <Label Grid.Row="12" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1">Ville</Label>
-        <Label Grid.Row="13" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding CoordonneeP.Ville}"></Label>
+        <TextBox Grid.Row="13" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding CoordonneeP.Ville, Mode=TwoWay}"></TextBox>
         <Label Grid.Row="14" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1">Numéro de permis</Label>
-        <Label Grid.Row="15" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding NumPermis}"></Label>
+        <TextBox Grid.Row="15" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding NumPermis, Mode=TwoWay}"></TextBox>
         <Label Grid.Row="16" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1">Assurance</Label>
-        <Label Grid.Row="17" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding Assurance}"></Label>
+        <TextBox Grid.Row="17" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding Assurance, Mode=TwoWay}"></TextBox>
         <Label Grid.Row="18" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1">Date d'inscription</Label>
-        <Label Grid.Row="19" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding DateInscription}"></Label>
+        <DatePicker Grid.Row="19" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding DateInscription}"></DatePicker>
         <Label Grid.Row="20" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1">Dernière date de connection</Label>
-        <Label Grid.Row="21" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding dateConnection}"></Label>
+        <DatePicker Grid.Row="21" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding dateConnection, Mode=TwoWay}"></DatePicker>
         <Label Grid.Row="22" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1">Marque de voiture</Label>
-        <Label Grid.Row="23" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding Voiture.Marque}"></Label>
+        <TextBox Grid.Row="23" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding Voiture.Marque, Mode=TwoWay}"></TextBox>
         <Label Grid.Row="22" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1">Modèle de voiture</Label>
-        <Label Grid.Row="23" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding Voiture.modele}"></Label>
+        <TextBox Grid.Row="23" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding Voiture.modele, Mode=TwoWay}"></TextBox>
         <Label Grid.Row="22" Grid.Column="2" Grid.RowSpan="1" Grid.ColumnSpan="1">Immatriculation</Label>
-        <Label Grid.Row="23" Grid.Column="2" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding Voiture.Immatriculation}"></Label>
-        <Label Grid.Row="22" Grid.Column="3" Grid.RowSpan="1" Grid.ColumnSpan="1">Nombre de place du véhicule</Label>
-        <Label Grid.Row="23" Grid.Column="3" Grid.RowSpan="1" Grid.ColumnSpan="1" Content="{Binding Voiture.Nb_Place}"></Label>
+        <TextBox Grid.Row="23" Grid.Column="2" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding Voiture.Immatriculation, Mode=TwoWay}"></TextBox>
+        <Label Grid.Row="22" Grid.Column="3" Grid.RowSpan="1" Grid.ColumnSpan="2">Nombre de place du véhicule</Label>
+        <TextBox Grid.Row="23" Grid.Column="3" Grid.RowSpan="1" Grid.ColumnSpan="1" Text="{Binding Voiture.Nb_Place, Mode=TwoWay}"></TextBox>
 
-
+    
     </Grid>
 </Window>

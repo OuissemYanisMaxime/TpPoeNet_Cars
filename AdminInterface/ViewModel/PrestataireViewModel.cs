@@ -18,7 +18,6 @@ namespace AdminInterface.ViewModel
 {
     class PrestataireViewModel : ViewModelBase, INotifyPropertyChanged
     {
-        public Window MainWindow;
         private Prestataire prestataire;
         private CoordonneeP coordonneeP;
         public ICommand CommandInfoPrestataire { get; }
@@ -98,7 +97,7 @@ namespace AdminInterface.ViewModel
             prestataire = new Prestataire();
             coordonneeP = new CoordonneeP();
             mesPrestataire = new ObservableCollection<Prestataire>();
-            CommandInfoPrestataire = new RelayCommand(InfoduPrestataire);
+            //CommandInfoPrestataire = new RelayCommand(InfoduPrestataire);
            
 
 
@@ -138,13 +137,13 @@ namespace AdminInterface.ViewModel
             return res;
         }
 
-        public void InfoduPrestataire()
-        {
-            
-            //InfoPresta InfoWindow = new InfoPresta(id);
-            ////InfoPresta InfoWindow = new InfoPresta();
-            //InfoWindow.Show();
-        }
+        //public void InfoduPrestataire()
+        //{
+
+        //    InfoPresta InfoWindow = new InfoPresta(id);
+        
+        //    InfoWindow.Show();
+        //}
 
 
     }
