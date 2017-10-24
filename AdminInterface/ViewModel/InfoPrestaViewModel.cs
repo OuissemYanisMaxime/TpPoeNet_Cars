@@ -101,6 +101,10 @@ namespace AdminInterface.ViewModel
             
 
         }
+        public void debug_test()
+        {
+
+        }
         public void initPrestaViewModel(int id)
         {
             

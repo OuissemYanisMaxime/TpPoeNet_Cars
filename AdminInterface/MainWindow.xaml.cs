@@ -30,18 +30,26 @@ namespace AdminInterface
             
         }
 
-        private void Btn_detail_Click(object sender, RoutedEventArgs e)
-        {
-            PrestataireViewModel pvm = new PrestataireViewModel();
+        
 
-            int id = pvm.convert_id_id(ListPresta.SelectedIndex);
-            
-            InfoPresta InfoWindow = new InfoPresta(id);
-            //InfoPresta InfoWindow = new InfoPresta();
-            InfoWindow.Show();
+        private void Btn_ListPresta_Click(object sender, RoutedEventArgs e)
+        {
+            ListingPrestataire w = new ListingPrestataire();
+            w.Show();
         }
 
-        
+        private void Btn_ListClient_Click(object sender, RoutedEventArgs e)
+        {
+            ListingClient w = new ListingClient();
+            w.Show();
+        }
+
+        private void Btn_ListPrestation_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
     }
 }
 

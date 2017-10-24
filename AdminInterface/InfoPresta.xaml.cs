@@ -25,13 +25,16 @@ namespace AdminInterface
         {
             InitializeComponent();
         }
+        //public InfoPresta(Prestataire p) : this()
+        //{
+
         public InfoPresta(int id) : this()
         {
-            
+            //(DataContext as InfoPrestaViewModel).Prestataire = p;
             (DataContext as InfoPrestaViewModel).Id = id;
-
             InfoPrestaViewModel ipvm = new InfoPrestaViewModel();
             ipvm.initPrestaViewModel(id);
+            ipvm.debug_test();
             
         }
         private void Close_Click(object sender, RoutedEventArgs e)

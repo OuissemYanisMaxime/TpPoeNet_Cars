@@ -137,13 +137,22 @@ namespace AdminInterface.ViewModel
             return res;
         }
 
-        //public void InfoduPrestataire()
-        //{
 
-        //    InfoPresta InfoWindow = new InfoPresta(id);
-        
-        //    InfoWindow.Show();
-        //}
+
+        public Prestataire convert_id_to_presta(int id)
+        {
+
+
+            prestataire = mesPrestataire[id];
+
+            return prestataire;
+        }
+
+
+
+
+
+
 
 
     }

@@ -12,8 +12,8 @@
         <Grid Margin="2,2,2,2">
             <Image HorizontalAlignment="Left" Height="70" Margin="24,10,0,0" VerticalAlignment="Top" Width="155" Source="/IMG/Logo_tp.png"/>
 
-            <TabControl  Margin="2,100,2,2" >
-                <TabItem Header="Prestataires">
+            <Grid  Margin="2,100,2,2" >
+               
                     <Grid Background="#FF707070" Margin="2,2,2,2"   >
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
@@ -30,37 +30,16 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="3" Margin="5,0,0,0">
-                        <ListView ItemsSource="{Binding MesPrestataire}" SelectionMode="Single" x:Name="ListPresta">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="{Binding Coordonnee.Nom}"></Label>
-                                            <Label Content="{Binding Coordonnee.Prenom}"></Label>
-                                            <Label Content="{Binding Disponibilite}"></Label>
-                                            <Label Content="{Binding Voiture.Immatriculation}"></Label>
-                                        <Separator></Separator>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </ScrollViewer>
-                        <Button x:Name="Btn_detail" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="100"  FontWeight="Bold" FontSize="16" Background="#FF3B5BEA" Click="Btn_detail_Click">Voir détail
-                        </Button>
+                <Button x:Name="Btn_ListPresta" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="100"  FontWeight="Bold" FontSize="16" Background="#FF3B5BEA" Click="Btn_ListPresta_Click">Voir liste Prestataire
+                </Button>
+                <Button x:Name="Btn_ListClient" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="100"  FontWeight="Bold" FontSize="16" Background="#FF3B5BEA" Click="Btn_ListClient_Click">Voir liste client
+                </Button>
+                <Button x:Name="Btn_ListPrestation" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="100"  FontWeight="Bold" FontSize="16" Background="#FF3B5BEA" Click="Btn_ListPrestation_Click">Voir liste Prestation
+                </Button>
 
+            </Grid>
 
-                    </Grid>
-
-                </TabItem>
-                <TabItem Header="Clients">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-                <TabItem Header="Prestations">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-                <TabItem Header="Statistique">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-            </TabControl>
+                
+            </Grid>
         </Grid>
 </Window>
