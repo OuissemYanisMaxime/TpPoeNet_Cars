@@ -383,7 +383,12 @@ C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.Security.Twitter.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Web.Infrastructure.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Newtonsoft.Json.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Owin.dll
+C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Net.Http.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Net.Http.Formatting.dll
+C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Security.Cryptography.Algorithms.dll
+C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Security.Cryptography.Encoding.dll
+C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Security.Cryptography.Primitives.dll
+C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Security.Cryptography.X509Certificates.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Web.Helpers.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Web.Http.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Web.Http.Owin.dll
@@ -398,6 +403,11 @@ C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\WebGrease.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\DAO.pdb
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\DAO.dll.config
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.xml
+C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.Security.xml
+C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.Security.Cookies.xml
+C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.Security.OAuth.xml
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Newtonsoft.Json.xml
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Net.Http.Formatting.xml
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Web.Helpers.xml
@@ -415,12 +425,7 @@ C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\EntityFramework.SqlServer.xml
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.AspNet.Identity.Core.xml
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.xml
-C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.Host.SystemWeb.xml
-C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.Security.xml
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.Security.Facebook.xml
-C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.Security.Cookies.xml
-C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.Security.OAuth.xml
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.Security.Google.xml
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.Security.Twitter.xml
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
@@ -430,6 +435,9 @@ C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.AI.DependencyCollector.xm
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.AI.WindowsServer.xml
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\Microsoft.AI.Web.xml
+C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\Microsoft.Owin.resources.dll
+C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\Microsoft.Owin.Host.SystemWeb.resources.dll
+C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\Microsoft.Owin.Security.resources.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\System.Net.Http.Formatting.resources.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\System.Web.Helpers.resources.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\System.Web.Http.resources.dll
@@ -445,9 +453,6 @@ C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\EntityFramework.SqlServer.resour
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\Microsoft.AspNet.Identity.Core.resources.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\Microsoft.AspNet.Identity.Owin.resources.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\Microsoft.Owin.resources.dll
-C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\Microsoft.Owin.Host.SystemWeb.resources.dll
-C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\Microsoft.Owin.Security.resources.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\Microsoft.Owin.Security.Facebook.resources.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\Microsoft.Owin.Security.Google.resources.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\fr\Microsoft.Owin.Security.Twitter.resources.dll
@@ -457,8 +462,3 @@ C:\projet_Cars\TpPoeNet_Cars\API_Comptes\obj\Debug\API_Comptes.csprojResolveAsse
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\obj\Debug\API_Comptes.csproj.CoreCompileInputs.cache
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\obj\Debug\API_Comptes.dll
 C:\projet_Cars\TpPoeNet_Cars\API_Comptes\obj\Debug\API_Comptes.pdb
-C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Net.Http.dll
-C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Security.Cryptography.Algorithms.dll
-C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Security.Cryptography.Encoding.dll
-C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Security.Cryptography.Primitives.dll
-C:\projet_Cars\TpPoeNet_Cars\API_Comptes\bin\System.Security.Cryptography.X509Certificates.dll

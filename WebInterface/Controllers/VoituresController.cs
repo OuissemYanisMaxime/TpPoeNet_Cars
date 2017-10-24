@@ -9,6 +9,7 @@ using Flurl.Http;
 using System.Web.Mvc;
 using DAO.modeles;
 using System.Threading.Tasks;
+using WebInterface.Filters;
 
 namespace WebInterface.Controllers
 {
@@ -19,31 +20,21 @@ namespace WebInterface.Controllers
         // test du contrôleur userTester de l'api API_Comptes
 
         [HttpGet]
+        [IsPrestataireConnected]
         [Route("Voitures/UserTest")]
         //[ResponseType(typeof(bool))]        
-        public async Task<String> testIsAdmin() // (IOwinContext actualContext)
-        {
-            string userToken = "EyBr4vLoT7JW7LodkCXg72cqayvKpS66DAu5zfgyciNGTbTKaBf9RBR15vS7vku52hXbX-CxEEYgRsL05acE5x6kb11eizIwBcFAH_8svpGPLaqruqfDxloYMZogqICDEZzoljytOLv4vdbxmW80FQM-7_ijasd-QzbgVoeEJmJJxTJfSJTFjLL6EzbH0HAzFfC_pLe19nnBgJPM1ppooihPub3ZK66jqIMuTdvz5QxkSlj0TGsmJAi-SjjNT1wLI80xJ5mVV_9LXj5YmBb58QYLdzd8pc_TEJnhuW4uHbJ5gjF8YPo_NuLDD9jy73zWm0rKhS9bdrRs9SZD0A0EJ6EqZmFElD1QvxNPlCAQl7IC_-TBR9Z5nMGIoRDqUsGZ1qFUZwmP3IK5prBg81jBJeDlhNcFHLNRRZ--zX1beYLZkBMMXW-2yY3BrSAxSkD-4okXbq6lOqthFQt8sygHO1WIfKqEjDF0RuxX28GjmOmFTi9W8LUOoP9rVX-b5nvDh84j7Ihe5-T7rsm1jv5PSQ"; // Request.Cookies["UserSettings"]["token"];
-            bool result = await "http://localhost:50631/api/IsAdmin"
-                    .WithOAuthBearerToken(userToken)
-                    .WithHeader("Accept", "application/json")
-                    .PostAsync(null).ReceiveJson<bool>();
-
-            return result.ToString();            
+        public String testIsPrestataire() // (IOwinContext actualContext)
+        {           
+            return true.ToString();            
         }
 
         [HttpGet]
+        [IsClientConnected]
         [Route("Voitures/UserTest1")]
         //[ResponseType(typeof(bool))]        
-        public async Task<String> testIsClient() // (IOwinContext actualContext)
-        {
-            string userToken = "EyBr4vLoT7JW7LodkCXg72cqayvKpS66DAu5zfgyciNGTbTKaBf9RBR15vS7vku52hXbX-CxEEYgRsL05acE5x6kb11eizIwBcFAH_8svpGPLaqruqfDxloYMZogqICDEZzoljytOLv4vdbxmW80FQM-7_ijasd-QzbgVoeEJmJJxTJfSJTFjLL6EzbH0HAzFfC_pLe19nnBgJPM1ppooihPub3ZK66jqIMuTdvz5QxkSlj0TGsmJAi-SjjNT1wLI80xJ5mVV_9LXj5YmBb58QYLdzd8pc_TEJnhuW4uHbJ5gjF8YPo_NuLDD9jy73zWm0rKhS9bdrRs9SZD0A0EJ6EqZmFElD1QvxNPlCAQl7IC_-TBR9Z5nMGIoRDqUsGZ1qFUZwmP3IK5prBg81jBJeDlhNcFHLNRRZ--zX1beYLZkBMMXW-2yY3BrSAxSkD-4okXbq6lOqthFQt8sygHO1WIfKqEjDF0RuxX28GjmOmFTi9W8LUOoP9rVX-b5nvDh84j7Ihe5-T7rsm1jv5PSQ"; // Request.Cookies["UserSettings"]["token"];
-            bool result = await "http://localhost:50631/api/IsCustomer"
-                    .WithOAuthBearerToken(userToken)
-                    .WithHeader("Accept", "application/json")
-                    .PostAsync(null).ReceiveJson<bool>();
-
-            return result.ToString();
+        public  String testIsClient() // (IOwinContext actualContext)
+        {            
+            return true.ToString();
         }
 
         // GET: Voitures

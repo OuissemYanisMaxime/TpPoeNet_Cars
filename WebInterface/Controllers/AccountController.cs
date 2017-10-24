@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebInterface.Models;
+using Flurl.Http;
 
 namespace WebInterface.Controllers
 {
@@ -75,20 +76,30 @@ namespace WebInterface.Controllers
 
             // Ceci ne comptabilise pas les échecs de connexion pour le verrouillage du compte
             // Pour que les échecs de mot de passe déclenchent le verrouillage du compte, utilisez shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            //var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);            
+
+            TokenModel tm = new TokenModel("password",model.Email,model.Password);
+
+            TokenResultModel result = await "http://localhost:50631/token"
+                .WithHeader("Accept", "application/json")
+                .PostUrlEncodedAsync(tm).ReceiveJson<TokenResultModel>();
+
+            if ((result != null) && (result.access_token != null))
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Tentative de connexion non valide.");
-                    return View(model);
+                HttpCookie myCookie = new HttpCookie("UserSettings");
+                myCookie["token"] = result.access_token;
+                myCookie.Expires = DateTime.Now.AddDays(1d); //result.expires;
+                Response.Cookies.Add(myCookie);
+                return RedirectToLocal(returnUrl);
             }
+            else
+            {
+                ModelState.AddModelError("", "Tentative de connexion non valide.");
+                return View(model);
+            }            
+             //case SignInStatus.RequiresVerification:
+             //       return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+
         }
 
         //
@@ -151,7 +162,7 @@ namespace WebInterface.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new Models.ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -367,7 +378,7 @@ namespace WebInterface.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new Models.ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -389,9 +400,25 @@ namespace WebInterface.Controllers
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
-        {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+        public async Task<ActionResult> LogOff()
+        {            
+            if (Request.Cookies["UserSettings"] != null)
+            {
+                if (Request.Cookies["UserSettings"]["token"] != null)
+                {
+                    string userToken = Request.Cookies["UserSettings"]["token"];
+                    bool result = await "http://localhost:50631/api/Account/Logout"
+                        .WithOAuthBearerToken(userToken)
+                        .WithHeader("Accept", "application/json")
+                        .PostAsync(null).ReceiveJson<bool>();
+
+                    HttpCookie myCookie = new HttpCookie("UserSettings");
+                    myCookie.Expires = DateTime.Now.AddDays(-1d);
+                    Response.Cookies.Add(myCookie);
+                }
+            }
+            // commented for tests
+            //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
 

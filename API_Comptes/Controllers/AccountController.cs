@@ -70,13 +70,21 @@ namespace API_Comptes.Controllers
 
         // POST api/Account/Logout
         [Route("Logout")]
+        [HostAuthentication("bearer")]
+        [OverrideAuthorization]            
         public IHttpActionResult Logout()
-        {   // ces 2 lignes permette de désactiver le token actuel
-            var a = Request.GetOwinContext();
+        {              
             Request.GetOwinContext().Authentication.SignOut();
             //
-            Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
-            return Ok();
+            // Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
+            HttpContext.Current.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ExternalBearer);
+
+
+            // cette ligne permette de désactiver le token actuel
+            ApplicationOAuthProvider.days = 0;
+            ApplicationOAuthProvider.milliseconds = 10;            
+
+            return Ok(true);
         }
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
