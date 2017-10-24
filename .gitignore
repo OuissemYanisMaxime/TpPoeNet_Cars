@@ -32,3 +32,13 @@ API_Connection/obj/
 \.vs/
 
 AdminInterface/bin/
+
+API_Comptes/obj/
+
+API_Comptes/
+
+API_Prestation/
+
+DAO/
+
+WebInterface/

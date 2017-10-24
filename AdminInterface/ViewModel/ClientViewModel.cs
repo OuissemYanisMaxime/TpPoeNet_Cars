@@ -11,42 +11,92 @@ using System.Windows;
 using System.Windows.Threading;
 using GalaSoft.MvvmLight;
 using AdminInterface.Class;
+using System.Windows.Input;
 
 namespace AdminInterface.ViewModel
 {
     class ClientViewModel : ViewModelBase
     {
-        private ObservableCollection<Client> listeClient;
+        private Client client;
+        private CoordonneeC coordonneeC;
+        public ICommand CommandInfoClients { get; }
 
-        public ObservableCollection<Client> ListeClient
-        {
-            get => listeClient;
-            set { listeClient = value; RaisePropertyChanged("ListeClient"); }
-        }
+        public Client Client { get => client; set { client = value; RaisePropertyChanged("Client"); } }
+
+        public int Id { get => client.Id; set { client.Id = value; RaisePropertyChanged("Id"); } }
+
+
+        public string LienImage { get => client.LienImage; set { client.LienImage = value; RaisePropertyChanged("LienImage"); } }
+
+
+
+        public DateTime DateInscription { get => client.DateInscription; }
+
+
+        public DateTime dateConnection { get => client.DateConnection; set { client.DateConnection = value; RaisePropertyChanged("dateConnection"); } }
+
+
+        public CoordonneeC CoordonneeC { get => coordonneeC; set { coordonneeC = value; RaisePropertyChanged("CoordonneeC"); } }
+
+        public string Mail { get => coordonneeC.Mail; set { coordonneeC.Mail = value; RaisePropertyChanged("MailC"); } }
+
+
+        public string Nom { get => coordonneeC.Nom; set { coordonneeC.Nom = value; RaisePropertyChanged("NomC"); } }
+
+
+        public string Prenom { get => coordonneeC.Prenom; set { coordonneeC.Prenom = value; RaisePropertyChanged("PrenomC"); } }
+
+
+        public string TelephoneFixe { get => coordonneeC.TelephoneFixe; set { coordonneeC.TelephoneFixe = value; RaisePropertyChanged("TelephoneFixeC"); } }
+
+
+        public string TelephonePortable { get => coordonneeC.TelephonePortable; set { coordonneeC.TelephonePortable = value; RaisePropertyChanged("TelephonePortableC"); } }
+
+        public string Rue { get => coordonneeC.Rue; set { coordonneeC.Rue = value; RaisePropertyChanged("RueC"); } }
+
+
+        public String CodePostal { get => coordonneeC.CodePostal; set { coordonneeC.CodePostal = value; RaisePropertyChanged("CodePostalC"); } }
+
+        private ObservableCollection<Client> mesClients;
+        public ObservableCollection<Client> MesClients { get => mesClients; set { mesClients = value; RaisePropertyChanged("MesClients"); } }
+
+
 
         public ClientViewModel()
         {
-            if (!DesignerProperties.GetIsInDesignMode(Application.Current.MainWindow)) //pour éviter les plantages du designer...
-            {
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(PopulateListeClientFromAPI));
-            }
+            client = new Client();
+            coordonneeC = new CoordonneeC();
+            mesClients = new ObservableCollection<Client>();
+            //CommandInfoPrestataire = new RelayCommand(InfoduPrestataire);
+
+
+
+            Task t = Task.Run(() => PopulateListeClientFromAPI());
+
+            t.Wait();
+
+
         }
 
-        public async void PopulateListeClientFromAPI()
+        public async Task<ObservableCollection<Client>> PopulateListeClientFromAPI()
         {
             IEnumerable<Client> tempListClient;
-            HttpClient clientForClientIndex = new HttpClient();
-            clientForClientIndex.BaseAddress = new Uri("http://localhost:52467/");
-            clientForClientIndex.DefaultRequestHeaders.Accept.Clear();
-            clientForClientIndex.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //clientForClientIndex.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Session["token"].ToString());
-            HttpResponseMessage reponseAPI = await clientForClientIndex.GetAsync("api/Clients");
+            HttpClient Rqlistclient = new HttpClient();
+            Rqlistclient.BaseAddress = new Uri("http://localhost:52467/");
+            Rqlistclient.DefaultRequestHeaders.Accept.Clear();
+            Rqlistclient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage reponseAPI = await Rqlistclient.GetAsync("api/Clients1");
             if (reponseAPI.IsSuccessStatusCode)
             {
                 tempListClient = await reponseAPI.Content.ReadAsAsync<IEnumerable<Client>>();
-                ListeClient = new ObservableCollection<Client>(tempListClient);
+                mesClients = new ObservableCollection<Client>(tempListClient);
             }
+            return mesClients;
         }
+
+
+
 
     }
 }

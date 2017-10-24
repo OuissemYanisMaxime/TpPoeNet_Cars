@@ -74,10 +74,24 @@
     <Compile Include="InfoPresta.xaml.cs">
       <DependentUpon>InfoPresta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListingClient.xaml.cs">
+      <DependentUpon>ListingClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListingPrestataire.xaml.cs">
+      <DependentUpon>ListingPrestataire.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Page Include="InfoPresta.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ListingClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListingPrestataire.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

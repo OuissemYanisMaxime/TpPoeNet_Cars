@@ -22,9 +22,6 @@ namespace AdminInterface.Class
         public string LienImage { get; set; }
 
         
-        public string MdpCrypte { get; set; }
-
-        
         public DateTime DateConnection { get; set; }
 
        
