@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+@using WebInterface.CustomHelpers;
+@if (MyHelpers.IsClientConnected())
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {

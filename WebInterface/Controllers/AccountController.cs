@@ -13,7 +13,7 @@ using Flurl.Http;
 
 namespace WebInterface.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

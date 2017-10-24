@@ -224,6 +224,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TokenModel.cs" />
     <Compile Include="Models\TokenResultModel.cs" />
+    <Compile Include="CustomHelpers\MyHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
