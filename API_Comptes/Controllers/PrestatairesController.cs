@@ -10,7 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using DAO.modeles;
 
-namespace WebApplication1.Controllers
+namespace API_Comptes.Controllers
 {
     public class PrestatairesController : ApiController
     {

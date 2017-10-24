@@ -333,7 +333,7 @@ namespace API_Comptes.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Register.Email, Email = model.Register.Email };
+            var user = new ApplicationUser() { UserName = model.Register.Email, Email = model.Register.Email };            
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Register.Password);
 
@@ -341,7 +341,9 @@ namespace API_Comptes.Controllers
             {
                 return GetErrorResult(result);
             }
-
+                        
+            var result1 = UserManager.AddToRole(user.Id, "Client");
+            
             model.Client.Coordonnee.Mail = model.Register.Email;
             db.Clients.Add(model.Client);
             db.SaveChanges();
@@ -371,9 +373,41 @@ namespace API_Comptes.Controllers
                 return GetErrorResult(result);
             }
 
+            var result1 = UserManager.AddToRole(user.Id, "Prestataire");
+
             model.Prestataire.Coordonnee.Mail = model.Register.Email;
             db.Prestataires.Add(model.Prestataire);
             db.SaveChanges();
+
+            // faire un redirect pour créer automatiquement un token si un register réussi
+            //return RedirectToRoute("Default", new { controller = "", method = "" });
+
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [Route("Register/Technicien")]
+        public async Task<IHttpActionResult> RegisterTechnicien(RegisterBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+
+            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            var result1 = UserManager.AddToRole(user.Id, "technicien");
+
+            //model.Prestataire.Coordonnee.Mail = model.Register.Email;
+            //db.Prestataires.Add(model.Prestataire);
+            //db.SaveChanges();
 
             // faire un redirect pour créer automatiquement un token si un register réussi
             //return RedirectToRoute("Default", new { controller = "", method = "" });
