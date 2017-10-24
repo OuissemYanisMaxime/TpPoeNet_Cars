@@ -50,7 +50,7 @@ namespace API_Prestation.Controllers
         // A FAIRE
         // GET: api/GetPrestatairesLibresEtProches/id
         [Route("api/GetPrestatairesLibresEtProches/{idCli}")]
-        public string GetPrestatairesLibresEtProches(int idCli) //IQueryable<Prestataire> GetPrestatairesLibresEtProches(int idCli)
+        public Prestataire GetPrestatairesLibresEtProches(int idCli) //IQueryable<Prestataire> GetPrestatairesLibresEtProches(int idCli)
         {
             Prestation p = db.Prestations.Find(idCli);
             var address = p.RueDep + " " + p.VilleDep; // "123 something st, somewhere"; /*https://www.google.fr/maps/@50.5961833,3.0853137,12z*/
@@ -74,6 +74,11 @@ namespace API_Prestation.Controllers
             double lng111 = double.Parse(lng11);
 
             double distance = 42000.0;
+            string lat22 = "";
+            string lng22 = "";
+            double lat222 = 0.0;
+            double lng222 = 0.0;
+            Prestataire pres = new Prestataire();
 
             ////Prestataire p1 = db.Prestataires.Find(1);
             foreach (Prestataire p1 in db.Prestataires)
@@ -90,25 +95,25 @@ namespace API_Prestation.Controllers
                     var locationElement2 = result2.Element("geometry").Element("location");
                     var lat2 = locationElement2.Element("lat");
                     var lng2 = locationElement2.Element("lng");
-                    string lat22 = lat2.ToString().Substring(5, 15);
+                    lat22 = lat2.ToString().Substring(5, 15);
                     lat22 = lat22.Substring(0, 10);
                     lat22 = lat22.Replace(".", ",");
-                    string lng22 = lng2.ToString().Substring(5, 15);
+                    lng22 = lng2.ToString().Substring(5, 15);
                     lng22 = lng22.Substring(0, 9);
                     lng22 = lng22.Replace(".", ",");
-                    double lat222 = double.Parse(lat22);
-                    double lng222 = double.Parse(lng22);
+                    lat222 = double.Parse(lat22);
+                    lng222 = double.Parse(lng22);
 
                     if (GetDistanceBetween(lat111, lng111, lat222, lng222) < distance)
                     {
                         distance = GetDistanceBetween(lat111, lng111, lat222, lng222);
+                        pres = p1;
                     }
-                    return result2.ToString();
                 }
             }
 
             //return "";
-            return distance.ToString();
+            return pres;
         }
 
 

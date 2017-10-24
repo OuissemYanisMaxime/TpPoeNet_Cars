@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpPoeNet", "TpPoeNet\TpPoeNet.csproj", "{B9650C5E-06CD-49F2-AB45-87B1014721A3}"
 EndProject
@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_Comptes", "API_Comptes\API_Comptes.csproj", "{140E1078-CDC4-4B53-B62C-4BFD806D332C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebInterface", "WebInterface\WebInterface.csproj", "{F3CCE768-1A8E-45EC-9C66-E566BE321E82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebInterface2", "WebInterface\WebInterface2.csproj", "{F3CCE768-1A8E-45EC-9C66-E566BE321E82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
