@@ -88,6 +88,7 @@ namespace WebInterface.Controllers
             {
                 HttpCookie myCookie = new HttpCookie("UserSettings");
                 myCookie["token"] = result.access_token;
+                myCookie["email"] = model.Email;
                 myCookie.Expires = DateTime.Now.AddDays(1d); //result.expires;
                 Response.Cookies.Add(myCookie);
                 return RedirectToLocal(returnUrl);
