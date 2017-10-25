@@ -16,6 +16,8 @@ namespace API_Comptes.Providers
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string _publicClientId;
+        public static int days = 14;
+        public static int milliseconds = 0;
 
         public ApplicationOAuthProvider(string publicClientId)
         {
@@ -67,6 +69,19 @@ namespace API_Comptes.Providers
             {
                 context.Validated();
             }
+
+            // mes modifs pour raffraichir le token encore 14 jours oubien l'expirer dans 10 millisecondes 
+            ///mais ça n'a pas marché comme cette méthode est lancée qu'au création deu token.
+            if (ApplicationOAuthProvider.days != 0)
+            {
+                context.Options.AccessTokenExpireTimeSpan = TimeSpan.FromDays(ApplicationOAuthProvider.days); 
+            }
+            else
+                context.Options.AccessTokenExpireTimeSpan = TimeSpan.FromMilliseconds(ApplicationOAuthProvider.milliseconds);
+
+            ApplicationOAuthProvider.days = 14;
+            ApplicationOAuthProvider.milliseconds = 0;
+            
 
             return Task.FromResult<object>(null);
         }

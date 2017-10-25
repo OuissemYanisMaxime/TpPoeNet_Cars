@@ -11,12 +11,13 @@ using System.Web.Http.Description;
 using DAO.modeles;
 
 namespace API_Comptes.Controllers
-{
+{    
     public class PrestatairesController : ApiController
     {
         private Db db = new Db();
 
         // GET: api/Prestataires
+        [Authorize(Roles = "Admin, Technicien, Prestataire, Client")]
         public IQueryable<Prestataire> GetPrestataires()
         {
             return db.Prestataires;
@@ -24,6 +25,7 @@ namespace API_Comptes.Controllers
 
         // GET: api/Prestataires/5
         [ResponseType(typeof(Prestataire))]
+        [Authorize(Roles = "Admin, Technicien, Prestataire, Client")]
         public IHttpActionResult GetPrestataire(int id)
         {
             Prestataire prestataire = db.Prestataires.Find(id);
@@ -35,8 +37,24 @@ namespace API_Comptes.Controllers
             return Ok(prestataire);
         }
 
+        // GET: api/Clients/email/?email=****@****
+        [Authorize(Roles = "Admin, Technicien, Prestataire, Client")]
+        [ResponseType(typeof(Prestataire))]
+        [Route("api/prestataires/email")]
+        public Prestataire GetPrestataire(string email)
+        {
+            IQueryable<Prestataire> prestataires = db.Prestataires.Include(p => p.Coordonnee).Include(p=>p.Voiture).Where(p => p.Coordonnee.Mail == email);
+            if (prestataires.Count() != 0)
+                return prestataires.First();
+            else
+                return default(Prestataire);
+
+            //return Ok(client);
+        }
+
         // PUT: api/Prestataires/5
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "Admin, Technicien, Prestataire")]
         public IHttpActionResult PutPrestataire(int id, Prestataire prestataire)
         {
             if (!ModelState.IsValid)
@@ -50,6 +68,8 @@ namespace API_Comptes.Controllers
             }
 
             db.Entry(prestataire).State = EntityState.Modified;
+            db.Entry(prestataire.Coordonnee).State = EntityState.Modified;
+            db.Entry(prestataire.Voiture).State = EntityState.Modified;
 
             try
             {
@@ -72,6 +92,7 @@ namespace API_Comptes.Controllers
 
         // POST: api/Prestataires
         [ResponseType(typeof(Prestataire))]
+        [Authorize(Roles = "Admin, Prestataire")]
         public IHttpActionResult PostPrestataire(Prestataire prestataire)
         {
             if (!ModelState.IsValid)
@@ -87,6 +108,7 @@ namespace API_Comptes.Controllers
 
         // DELETE: api/Prestataires/5
         [ResponseType(typeof(Prestataire))]
+        [Authorize(Roles = "Admin, Technicien")]
         public IHttpActionResult DeletePrestataire(int id)
         {
             Prestataire prestataire = db.Prestataires.Find(id);
@@ -110,6 +132,7 @@ namespace API_Comptes.Controllers
             base.Dispose(disposing);
         }
 
+        [Authorize(Roles = "Admin, Technicien, Prestataire, Client")]
         private bool PrestataireExists(int id)
         {
             return db.Prestataires.Count(e => e.Id == id) > 0;

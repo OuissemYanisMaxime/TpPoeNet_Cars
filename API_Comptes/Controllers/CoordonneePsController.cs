@@ -12,6 +12,7 @@ using DAO.modeles;
 
 namespace API_Comptes.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CoordonneePsController : ApiController
     {
         private Db db = new Db();

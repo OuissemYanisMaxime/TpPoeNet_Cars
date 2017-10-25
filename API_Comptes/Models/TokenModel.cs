@@ -10,5 +10,12 @@ namespace API_Comptes.Models
         public string grant_type { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+
+        public TokenModel(string gt, string user, string pwd)
+        {
+            grant_type = gt;
+            username = user;
+            password = pwd;
+        }
     }
 }
