@@ -18,9 +18,9 @@ namespace AdminInterface
 {
     /// <summary>
     /// Logique d'interaction pour ListingPrestataire.xaml
-    /// </summary>
+    /// </summary>    /// 
     public partial class ListingPrestataire : Window
-    {
+    {        
         public ListingPrestataire()
         {
             InitializeComponent();

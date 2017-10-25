@@ -71,6 +71,9 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="InfoClient.xaml.cs">
+      <DependentUpon>InfoClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InfoPresta.xaml.cs">
       <DependentUpon>InfoPresta.xaml</DependentUpon>
     </Compile>
@@ -80,7 +83,12 @@
     <Compile Include="ListingPrestataire.xaml.cs">
       <DependentUpon>ListingPrestataire.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\InfoClientViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Page Include="InfoClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InfoPresta.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -142,7 +150,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\API_Prestation\API_Prestation.csproj">
+      <Project>{f799d5eb-0789-455c-83e1-954a021d4940}</Project>
+      <Name>API_Prestation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="IMG\Logo_tp.png" />
   </ItemGroup>

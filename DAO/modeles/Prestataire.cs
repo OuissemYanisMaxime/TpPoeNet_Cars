@@ -12,6 +12,8 @@ namespace DAO.modeles
     public class Prestataire
     {
 
+        
+
         [Key]
         public int Id { get; set; }
         
@@ -41,8 +43,8 @@ namespace DAO.modeles
 
         [Display(Name = "Date d'inscription : ")]
         [DataType(DataType.DateTime)]
-        public DateTime DateInscription { get; }
-                
+        public DateTime DateInscription { get; set; }
+
         [DataType(DataType.DateTime)]
         public DateTime dateConnection { get; set; }
 
@@ -51,6 +53,7 @@ namespace DAO.modeles
 
         [ForeignKey("IdVoiture")]
         public Voiture Voiture { get; set; }
+        
 
         //public virtual ICollection<Prestation> Prestations { get; set; }
 

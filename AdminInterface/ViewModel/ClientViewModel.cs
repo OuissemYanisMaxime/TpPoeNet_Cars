@@ -67,7 +67,7 @@ namespace AdminInterface.ViewModel
             client = new Client();
             coordonneeC = new CoordonneeC();
             mesClients = new ObservableCollection<Client>();
-            //CommandInfoPrestataire = new RelayCommand(InfoduPrestataire);
+            
 
 
 
@@ -76,6 +76,25 @@ namespace AdminInterface.ViewModel
             t.Wait();
 
 
+        }
+        public int convert_id_id(int id)
+        {
+            int res = -1;
+
+            res = mesClients[id].Id;
+
+            return res;
+        }
+
+
+
+        public Client convert_id_to_client(int id)
+        {
+
+
+            client = mesClients[id];
+
+            return client;
         }
 
         public async Task<ObservableCollection<Client>> PopulateListeClientFromAPI()

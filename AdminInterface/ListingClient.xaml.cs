@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AdminInterface.ViewModel;
+using AdminInterface.Class;
 
 namespace AdminInterface
 {
@@ -26,7 +28,19 @@ namespace AdminInterface
 
         private void Btn_detail_Click(object sender, RoutedEventArgs e)
         {
+            ClientViewModel cvm = new ClientViewModel();
+            Client c = new Client();
+            if (ListClient.SelectedIndex != -1)
+            {
 
+
+                //p = pvm.convert_id_to_presta(ListPresta.SelectedIndex);
+                //InfoPresta InfoWindow = new InfoPresta(p);
+                int id = cvm.convert_id_id(ListClient.SelectedIndex);
+                InfoClient InfoWindow = new InfoClient(id);
+
+                InfoWindow.Show();
+            }
         }
     }
 }

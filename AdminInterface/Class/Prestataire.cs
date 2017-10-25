@@ -35,7 +35,7 @@ namespace AdminInterface.Class
         public string MdpCrypte { get; set; }
 
         
-        public DateTime DateInscription { get; }
+        public DateTime DateInscription { get; set; }
                 
         
         public DateTime dateConnection { get; set; }
@@ -51,7 +51,7 @@ namespace AdminInterface.Class
         public Prestataire()
         {
             this.Disponibilite = Dispo.HS;
-            this.DateInscription = DateTime.Now;
+            //this.DateInscription = DateTime.Now;
         }
     }
 }

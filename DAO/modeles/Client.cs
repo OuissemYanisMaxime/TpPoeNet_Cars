@@ -19,7 +19,7 @@ namespace DAO.modeles
 
         [Display(Name = "Date d'inscription : ")]
         [DataType(DataType.DateTime)]
-        public DateTime DateInscription { get; }
+        public DateTime DateInscription { get; set; }
 
         [Display(Name = "Image de profil : ")]
         [Required(ErrorMessage = " obligatoire.")]

@@ -23,6 +23,7 @@ namespace AdminInterface.ViewModel
         private CoordonneeP coordonneeP;
 
         private Voiture voiture;
+        public RelayCommand<Prestataire> CommandSaveInfoPresta { get; }
         //public int id { get; set; }
         public Prestataire Prestataire { get => prestataire; set { prestataire = value; RaisePropertyChanged("Prestataire"); } }
 
@@ -97,14 +98,22 @@ namespace AdminInterface.ViewModel
             prestataire = new Prestataire();
             coordonneeP = new CoordonneeP();
             voiture  = new Voiture();
-
-            
-
+            CommandSaveInfoPresta = new RelayCommand<Prestataire>(commandeAExectuer);
         }
+
         public void debug_test()
         {
 
         }
+        public void commandeAExectuer(Prestataire p)
+        {
+            p = Prestataire;
+            Task t = Task.Run(() => PrestaUpdateAPI(Id, p));
+
+            t.Wait();
+
+        }
+
         public void initPrestaViewModel(int id)
         {
             
@@ -139,6 +148,28 @@ namespace AdminInterface.ViewModel
             }
             return prestataire;
         }
+        public async Task<Prestataire> PrestaUpdateAPI(int id, Prestataire p)
+        {
 
+            Prestataire Presta = p;
+            HttpClient RqPresta = new HttpClient();
+            RqPresta.BaseAddress = new Uri("http://localhost:52467/");
+            RqPresta.DefaultRequestHeaders.Accept.Clear();
+            RqPresta.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+
+            HttpResponseMessage reponseAPI = await RqPresta.PutAsJsonAsync(RqPresta.BaseAddress + "api/Prestataires1/" + id, Presta);
+
+            //HttpResponseMessage reponseAPI = await Rqlistclient.PutAsync("api/Clients1/" + client);
+            if (reponseAPI.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Tranfert ok");
+            }
+            else
+            {
+                MessageBox.Show("Tranfert pas ok");
+            }
+            return Presta;
+        }
     }
 }

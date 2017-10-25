@@ -21,9 +21,11 @@ namespace AdminInterface
     /// </summary>
     public partial class InfoPresta : Window
     {
+        static InfoPrestaViewModel ipvm;
         public InfoPresta()
         {
-            InitializeComponent();
+            InitializeComponent();            
+            this.DataContext = ListingPrestataire.GetWindow(this).DataContext;
         }
         //public InfoPresta(Prestataire p) : this()
         //{
@@ -32,10 +34,12 @@ namespace AdminInterface
         {
             //(DataContext as InfoPrestaViewModel).Prestataire = p;
             (DataContext as InfoPrestaViewModel).Id = id;
-            InfoPrestaViewModel ipvm = new InfoPrestaViewModel();
+            ipvm = new InfoPrestaViewModel();
             ipvm.initPrestaViewModel(id);
             ipvm.debug_test();
-            
+            DataContext  = ipvm;
+
+
         }
         private void Close_Click(object sender, RoutedEventArgs e)
         {
