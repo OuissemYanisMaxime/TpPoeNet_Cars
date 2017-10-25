@@ -211,7 +211,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\VoituresController.cs" />
+    <Compile Include="Controllers\MyControllers.cs" />
+    <Compile Include="Filters\PrestataireDetails.cs" />
+    <Compile Include="Filters\ClientDetails.cs" />
     <Compile Include="Filters\IsTechnicienConnected.cs" />
     <Compile Include="Filters\IsAdminConnected.cs" />
     <Compile Include="Filters\IsClientConnected.cs" />
