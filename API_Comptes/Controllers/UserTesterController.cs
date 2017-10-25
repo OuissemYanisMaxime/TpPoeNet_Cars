@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using System.Web.Http.Description;
 using System.Web.Http;
+using DAO.modeles;
 
 namespace API_Comptes.Controllers
 {
@@ -19,7 +20,30 @@ namespace API_Comptes.Controllers
     {
         public UserTesterController() : base()
         {            
-        }       
+        }
+
+        [ResponseType(typeof(Client))]
+        [Route("API/ClientDetails")]
+        public Boolean ClientDetails() // (IOwinContext actualContext)
+        {
+            IOwinContext actualContext = HttpContext.Current.GetOwinContext();
+            if (actualContext.Authentication.User.Identity.IsAuthenticated)
+            {
+                var user = actualContext.Authentication.User.Identity;
+                ApplicationDbContext context = new ApplicationDbContext();
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                var s = UserManager.GetRoles(user.GetUserId());
+                if ((s.Count > 0) && (s[0].ToString() == "Technicien"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
 
         [HttpPost]
         [ResponseType(typeof(bool))]
@@ -68,7 +92,7 @@ namespace API_Comptes.Controllers
             }
             return false;
         }
-
+        
         [ResponseType(typeof(bool))]
         [Route("API/IsCustomer")]
         public Boolean IsCustomer() // (IOwinContext actualContext)

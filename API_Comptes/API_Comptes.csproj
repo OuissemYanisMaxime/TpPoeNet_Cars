@@ -262,6 +262,12 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="viewModels\Client.cs" />
+    <Compile Include="viewModels\CoordonneeC.cs" />
+    <Compile Include="viewModels\CoordonneeP.cs" />
+    <Compile Include="viewModels\Prestataire.cs" />
+    <Compile Include="viewModels\Prestation.cs" />
+    <Compile Include="viewModels\Voiture.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
