@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebInterface.Models;
 using Flurl.Http;
+using API_Comptes.ViewModels;
+using API_Comptes.Models;
 
 namespace WebInterface.Controllers
 {
@@ -69,6 +71,21 @@ namespace WebInterface.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            if (model==null)
+            {
+                try
+                { model = (LoginViewModel)TempData["model"];
+                } catch(Exception e) { }
+            }
+            if (returnUrl == null)
+            {
+                try
+                {
+                    returnUrl = (string)TempData["returnUrl"];
+                }
+                catch (Exception e) { }
+            }           
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -89,7 +106,36 @@ namespace WebInterface.Controllers
                 HttpCookie myCookie = new HttpCookie("UserSettings");
                 myCookie["token"] = result.access_token;
                 myCookie["email"] = model.Email;
-                myCookie.Expires = DateTime.Now.AddDays(1d); //result.expires;
+
+                //// récupérer le nom du user à partir des coordonnées de client
+                string apiUrl = "http://localhost:50631/api/clients/email?email=" + model.Email;
+                bool IsSuccess = false;
+                try
+                {
+                    Client c = Task.Run<Client>(async () => await apiUrl
+                    .WithOAuthBearerToken(result.access_token)
+                    .WithHeader("Accept", "application/json")
+                    .GetAsync().ReceiveJson<Client>()).Result;;                    
+                    myCookie["Name"] = c.Coordonnee.Nom + " " + c.Coordonnee.Prenom;
+                }
+                catch (Exception e1)
+                {
+                    apiUrl = "http://localhost:50631/api/prestataires/email?email=" + model.Email;
+                    try
+                    {
+                        Prestataire p = Task.Run<Prestataire>(async () => await apiUrl
+                        .WithOAuthBearerToken(result.access_token)
+                        .WithHeader("Accept", "application/json")
+                        .GetAsync().ReceiveJson<Prestataire>()).Result; ;
+                        myCookie["Name"] = p.Coordonnee.Nom + " " + p.Coordonnee.Prenom;
+                    }                    
+                    catch (Exception e2)
+                    {
+                        myCookie["Name"] = "";
+                    }
+                }
+                ////
+                myCookie.Expires = DateTime.Now.AddDays(3d); //result.expires;
                 Response.Cookies.Add(myCookie);
                 return RedirectToLocal(returnUrl);
             }
@@ -149,38 +195,49 @@ namespace WebInterface.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult RegisterClient()
         {
             return View();
         }
 
         //
-        // POST: /Account/Register
+        // POST: /Account/RegisterClient
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> RegisterClient(RegisterClientBindingModel model)
         {
+            model.Client.Coordonnee.Mail = model.Register.Email;
             if (ModelState.IsValid)
-            {
-                var user = new Models.ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+            {               
+                string apiUrl = "http://localhost:50631/api/Account/Register/Client";
+                try
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // Pour plus d'informations sur l'activation de la confirmation de compte et de la réinitialisation de mot de passe, visitez https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Envoyer un message électronique avec ce lien
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirmez votre compte", "Confirmez votre compte en cliquant <a href=\"" + callbackUrl + "\">ici</a>");
+                    Task<System.Net.Http.HttpResponseMessage> t = Task.Run<System.Net.Http.HttpResponseMessage>(async () => await apiUrl
+                    .WithHeader("Accept", "application/json")
+                    .PostJsonAsync(model));
 
-                    return RedirectToAction("Index", "Home");
+                    if (t.IsCompleted)
+                    {
+                        LoginViewModel lvm=new LoginViewModel();
+                        lvm.Email = model.Register.Email;
+                        lvm.Password = model.Register.Password;
+                        lvm.RememberMe = false;
+                        TempData["model"] = lvm;
+                        TempData["returnUrl"] = "/home/index";
+                        return RedirectToAction("login","Account");
+                        //return RedirectToAction("Index", "Home");
+                    }
                 }
-                AddErrors(result);
+                catch(Exception e)
+                {
+                    // Si problème d'inscription
+                    AddErrors(new IdentityResult("inscription non abouti, réessayer encore!!"));
+                    return View(model);                    
+                }
             }
-
             // Si nous sommes arrivés là, un échec s’est produit. Réafficher le formulaire
+            AddErrors(new IdentityResult("inscription non abouti, réessayer encore!!"));
             return View(model);
         }
 
