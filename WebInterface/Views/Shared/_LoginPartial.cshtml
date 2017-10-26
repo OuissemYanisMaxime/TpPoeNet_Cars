@@ -1,17 +1,41 @@
 ﻿@using Microsoft.AspNet.Identity
 @using WebInterface.CustomHelpers;
 @if (MyHelpers.IsClientConnected())
-{ 
+{
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Bonjour " + ViewBag.client.nom!=null?ViewBag.client.nom as string:"!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @{  string name;
+                if ((ViewBag.client != null) && (ViewBag.client.Coordonnee.nom != null) )
+                {  name = ViewBag.client.Coordonnee.nom as string; }
+                else { name = "!"; }
+            }
+            @Html.ActionLink("Bonjour " + name, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a></li>
     </ul>
+    }
+}
+else if (MyHelpers.IsPrestataireConnected())
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @{  string name;
+                    if ((ViewBag.prestataire != null) && (ViewBag.prestataire.Coordonnee.nom != null))
+                    { name = ViewBag.prestataire.Coordonnee.nom as string; }
+                    else { name = "!"; }
+                }
+                @Html.ActionLink("Bonjour " + name, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a></li>
+        </ul>
     }
 }
 else
