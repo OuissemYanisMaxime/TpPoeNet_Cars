@@ -20,19 +20,30 @@ namespace WebInterface.Filters
                 string userToken = filterContext.HttpContext.Request.Cookies["UserSettings"]["token"];
                 string userEMail = filterContext.HttpContext.Request.Cookies["UserSettings"]["email"];
 
-                string apiUrl = "http://localhost:50631/api/prestataires/email/?email=" + userEMail;
-                Task<Prestataire> p = Task.Run<Prestataire>(async() => await apiUrl
+                string apiUrl = "http://localhost:50631/api/prestataires/email?email=" + userEMail;
+                Task<System.Net.Http.HttpResponseMessage> t = Task.Run<System.Net.Http.HttpResponseMessage>(async () => await apiUrl
                     .WithOAuthBearerToken(userToken)
                     .WithHeader("Accept", "application/json")
-                    .GetAsync().ReceiveJson<Prestataire>());
+                    .GetAsync());
 
-                if (p.Result != null)
-                    filterContext.Controller.ViewBag.user = p.Result;
+                bool IsSuccess = false;
+                try { IsSuccess = t.Result.IsSuccessStatusCode; }
+                catch (Exception e)
+                {
+                }
+                if (IsSuccess)
+                {
+                    Prestataire p = Task.Run<Prestataire>(async () => await t.ReceiveJson<Prestataire>()).Result;
+                    filterContext.Controller.ViewBag.prestataire = p;
+                }
+                else
+                {
+                    filterContext.Controller.ViewBag.prestataire = default(Prestataire);
+                }
             }
             else
-            {
-                Prestataire p = new Prestataire();
-                filterContext.Controller.ViewBag.prestataire = p;
+            {                
+                filterContext.Controller.ViewBag.prestataire = default(Client);
             }
         }      
     }
